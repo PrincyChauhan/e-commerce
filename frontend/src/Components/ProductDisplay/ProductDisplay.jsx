@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
+import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
   const { product } = props;
+  const { addToCart } = useContext(ShopContext);
 
   return (
     <div className="productdisplay">
@@ -38,9 +40,9 @@ const ProductDisplay = (props) => {
           </div>
         </div>
         <div className="productdisplay-right-description">
-          A light weight, usually cotton, fabric with a small, all-over,
-          printed design. The print is commonly a floral pattern, but can be
-          of any design or motif.
+          A light weight, usually cotton, fabric with a small, all-over, printed
+          design. The print is commonly a floral pattern, but can be of any
+          design or motif.
         </div>
         <div className="productdisplay-right-size">
           <h1>Select Size</h1>
@@ -52,10 +54,16 @@ const ProductDisplay = (props) => {
             <div>XXL</div>
           </div>
         </div>
-        <button>Add to Cart</button>
+        <button onClick={()=>{addToCart(product.id)}}>
+          Add to Cart
+        </button>
         <div className="productdisplay-right-category">
-          <p><span>Category:</span> Women,T-shirt,Crop Top</p>
-          <p><span>Tags:</span> Morden, Latest</p>
+          <p>
+            <span>Category:</span> Women,T-shirt,Crop Top
+          </p>
+          <p>
+            <span>Tags:</span> Morden, Latest
+          </p>
         </div>
       </div>
     </div>
